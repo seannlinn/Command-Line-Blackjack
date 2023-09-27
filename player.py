@@ -13,16 +13,10 @@ class Player:
     def hit(self):
         self.hand.extend(self.deck.draw_card(1))
         self.eval_total()
-        if self.total > 21:
-            return 1
-        return 0
         
     def deal(self):
         self.hand.extend(self.deck.draw_card(2))
         self.eval_total()
-        if self.total == 21:
-            return 1
-        return 0
     
     def eval_total(self):
         a_count = 0
@@ -40,13 +34,13 @@ class Player:
     
     def show_hand(self):
         if self.isDealer:
-            console.print("[red]DEALER'S HAND[/]")
+            console.print("[red]DEALER'S HAND:[/]")
         else:
-            console.print("[dark_green]YOUR HAND[/]")
+            console.print("[dark_green]YOUR HAND:[/]")
         for c in self.hand:
             c.show_card()
 
     def show_money(self):
-        console.print("MONEY: [bold]" + str(self.money) + "[/]")
+        console.print("[dark_green]MONEY: [/][bold][grey93]$" + str(self.money) + "[/][/]")
 
     
