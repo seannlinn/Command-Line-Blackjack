@@ -5,17 +5,16 @@ class Deck:
     def __init__(self):
         self.cards = []
 
-    def generateAndShuffle(self):
+    def generate_and_shuffle(self):
         for i in range(1, 14):
             for j in range(4):
                 self.cards.append(Card(i, j))
         random.shuffle(self.cards)
 
-    def drawCard(self, num):
-        drawnCards = []
+    def draw_card(self, num):
+        drawn_cards = []
         for i in range(num):
             card = self.cards.pop()
-            drawnCards.append(card)
-        return drawnCards
-    
+            drawn_cards.append(card)
+        return drawn_cards
     

@@ -8,7 +8,7 @@ class Card:
         self.value = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"][value-1]
         self.suit = "♦♣♥♠" [suit]
     
-    def cardValue(self):
+    def card_value(self):
         # if card is Ace, set card value to 11
         if self.cost == 1:
             return 11
@@ -21,7 +21,7 @@ class Card:
         else:
             return self.cost
     
-    def show(self):
+    def show_card(self):
         # if suit is a diamond, print with blue for suit
         if self.suit == 0:
             console.print("[" + self.value + "[blue]" + self.suit + "][/]")
