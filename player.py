@@ -1,5 +1,4 @@
 from rich.console import Console
-from deck import Deck
 
 console = Console()
 
@@ -11,16 +10,16 @@ class Player:
         self.total = 0
 
     def hit(self):
-        self.hand.extend(self.deck.draw(1))
+        self.hand.extend(self.deck.draw_card(1))
         self.eval_total()
-        if self.score > 21:
+        if self.total > 21:
             return 1
         return 0
         
     def deal(self):
-        self.hand.extend(self.deck.draw(2))
+        self.hand.extend(self.deck.draw_card(2))
         self.eval_total()
-        if self.score == 21:
+        if self.total == 21:
             return 1
         return 0
     
@@ -40,9 +39,9 @@ class Player:
     
     def show_hand(self):
         if self.isDealer:
-            console.print("DEALER'S HAND")
+            console.print("[red]DEALER'S HAND[/]")
         else:
-            console.print("YOUR HAND")
+            console.print("[dark_green]YOUR HAND[/]")
         for c in self.hand:
             c.show_card()
 

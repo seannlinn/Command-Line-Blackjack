@@ -17,4 +17,3 @@ class Deck:
             card = self.cards.pop()
             drawn_cards.append(card)
         return drawn_cards
-    

@@ -23,17 +23,17 @@ class Card:
     
     def show_card(self):
         # if suit is a diamond, print with blue for suit
-        if self.suit == 0:
-            console.print("[" + self.value + "[blue]" + self.suit + "][/]")
+        if self.suit == "♦":
+            console.print("[[grey93]" + self.value + "[/][blue]" + self.suit + "[/]]", end=" ")
         
         # if suit is a club, print with green for suit
-        elif self.suit == 1:
-            console.print("[" + self.value + "[green]" + self.suit + "][/]")
+        elif self.suit == "♣":
+            console.print("[[grey93]" + self.value + "[/][green]" + self.suit + "[/]]", end=" ")
 
         # if suit is a heart, print with red for suit
-        elif self.suit == 2:
-            console.print("[" + self.value + "[red]" + self.suit + "][/]")  
+        elif self.suit == "♥":
+            console.print("[[grey93]" + self.value + "[/][red]" + self.suit + "[/]]", end=" ")  
 
         # if suit is a spade, print with no colour
         else:
-            console.print("[" + self.value + self.suit + "]")
+            console.print("[[grey93]" + self.value + "[/]" + self.suit + "]", end=" ")
