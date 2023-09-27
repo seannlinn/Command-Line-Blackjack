@@ -10,6 +10,7 @@ class Blackjack:
         self.deck.generate_and_shuffle()
         self.player = Player(False, self.deck)
         self.dealer = Player(True, self.deck)
+        self.min_buyin = 5
 
     def play(self):
         p_status = self.player.deal()

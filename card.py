@@ -36,4 +36,4 @@ class Card:
 
         # if suit is a spade, print with no colour
         else:
-            console.print("[[grey93]" + self.value + "[/]" + self.suit + "]", end=" ")
+            console.print("[[grey93]" + self.value + "[/][black]" + self.suit + "[/]]", end=" ") 

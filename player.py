@@ -3,11 +3,12 @@ from rich.console import Console
 console = Console()
 
 class Player:
-    def __init__(self, isDealer, deck):
+    def __init__(self, isDealer, deck, money):
         self.hand = []
         self.isDealer = isDealer
         self.deck = deck
         self.total = 0
+        self.money = money
 
     def hit(self):
         self.hand.extend(self.deck.draw_card(1))
@@ -44,5 +45,8 @@ class Player:
             console.print("[dark_green]YOUR HAND[/]")
         for c in self.hand:
             c.show_card()
+
+    def show_money(self):
+        console.print("MONEY: [bold]" + str(self.money) + "[/]")
 
     
