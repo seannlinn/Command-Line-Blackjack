@@ -19,18 +19,9 @@ class Player:
         self.eval_total()
     
     def eval_total(self):
-        a_count = 0
         self.total = 0
         for card in self.hand:
-            if card.card_value() == 11:
-                a_count += 1
             self.total += card.card_value()
-
-        # check if over 21 and there is an ace, change value from 11 to 1
-        while a_count > 1 and self.total > 21:
-            self.total -= 10
-            a_count -= 1
-        return self.total
     
     def show_hand(self):
         if self.isDealer:
@@ -39,6 +30,7 @@ class Player:
             console.print("[dark_green]YOUR HAND:[/]")
         for c in self.hand:
             c.show_card()
+        console.print("\n")
 
     def show_money(self):
         console.print("[dark_green]MONEY: [/][bold][grey93]$" + str(self.money) + "[/][/]")

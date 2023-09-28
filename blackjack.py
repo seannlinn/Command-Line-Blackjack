@@ -36,7 +36,6 @@ class Blackjack:
         self.dealer.hand[0].show_card()
         console.print("\[[grey93]??[/]]\n\n")
         self.player.show_hand()
-        console.print("\n")
         self.player.show_money()
 
         self.make_move()
@@ -69,6 +68,9 @@ class Blackjack:
         quit()
 
     def move_stand(self):
+        quit()
+
+    def eval_aces(self):
         quit()
 
 b = Blackjack()
