@@ -15,7 +15,7 @@ class Blackjack:
     
     
     def initial_bet(self):
-        console.print("\n\n")
+        console.clear()
         self.player.show_money()
         if self.player.money >= 2:
             name = console.input("MIN $2 TO PLAY ~ ARE YOU IN? ENTER (y) OR (n)\n")
@@ -35,6 +35,7 @@ class Blackjack:
                 self.player.money -= bet_amount
                 self.possible_winnings = bet_amount
                 self.deal_hand()
+                console.clear()
                         
             else:
                 quit("THANKS FOR COMING")
@@ -46,13 +47,7 @@ class Blackjack:
     def deal_hand(self):
         self.player.deal()
         self.dealer.deal()
-
-        console.print("[red]DEALER'S HAND[/]")
-        self.dealer.hand[0].show_card()
-        console.print("\[[grey93]??[/]]\n\n")
-        self.player.show_hand()
-        self.player.show_money()
-
+        self.show_table_dealer_hidden()
         self.make_move()
 
     def make_move(self):
@@ -74,11 +69,12 @@ class Blackjack:
         self.player.hit()
         self.eval_aces_player()
         if self.player.total > 21:
-            self.player.show_hand()
+            self.show_table_dealer_hidden()
             console.print("OVER 21 ~ YOU LOSE\n")
+            time.sleep(3)
             self.reset_table()
         else:
-            self.player.show_hand()
+            self.show_table_dealer_hidden()
             self.make_move()
 
 
@@ -88,38 +84,44 @@ class Blackjack:
         self.player.hit()
         self.eval_aces_player()
         if self.player.total > 21:
-            self.player.show_hand()
+            self.show_table_dealer_hidden()
             console.print("OVER 21 ~ YOU LOSE\n")
+            time.sleep(3)
             self.reset_table()
         else:
-            self.player.show_hand()
+            self.show_table_dealer_hidden()
             self.move_stand()
 
     def move_stand(self):
-        self.dealer.show_hand()
+        self.show_table_dealer_revealed()
         while self.dealer.total < 17:
             time.sleep(1)
             self.dealer.hit()
-            self.dealer.show_hand()
+            self.show_table_dealer_revealed()
             self.eval_aces_dealer()
             if self.dealer.total > 21:
                 console.print("DEALER BUSTS ~ YOU WIN $" + str(self.possible_winnings*2))
                 self.player.money += self.possible_winnings*2
+                time.sleep(3)
                 self.reset_table()
         if self.player.total < self.dealer.total:
             console.print("DEALER WINS")
+            time.sleep(3)
             self.reset_table()
         elif self.player.total > self.dealer.total and self.player.total == 21:
             console.print("BLACKJACK ~ YOU WIN $" + str(self.possible_winnings*2.5))
             self.player.money += self.possible_winnings*2.5
+            time.sleep(3)
             self.reset_table()
         elif self.player.total > self.dealer.total:
             console.print("YOU WIN $" + str(self.possible_winnings*2))
             self.player.money += self.possible_winnings*2
+            time.sleep(3)
             self.reset_table()
         else:
             console.print("PUSH ~ NO WINNER")
             self.player.money += self.possible_winnings
+            time.sleep(3)
             self.reset_table()
         
     def eval_aces_dealer(self):
@@ -145,6 +147,21 @@ class Blackjack:
         self.dealer.hand.clear()
         self.deck.generate_and_shuffle()
         self.initial_bet()
+
+    def show_table_dealer_hidden(self):
+        console.clear()
+        console.print("[red]DEALER'S HAND:[/]")
+        self.dealer.hand[0].show_card()
+        console.print("\[[grey93]??[/]]\n")
+        self.player.show_hand()
+        self.player.show_money()
+
+    def show_table_dealer_revealed(self):
+        console.clear()
+        self.dealer.show_hand()
+        self.player.show_hand()
+        self.player.show_money()
+
     
 
         
