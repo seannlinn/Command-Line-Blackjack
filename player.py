@@ -8,7 +8,7 @@ class Player:
         self.isDealer = isDealer
         self.deck = deck
         self.total = 0
-        self.money = money
+        self.money = float(money)
 
     def hit(self):
         self.hand.extend(self.deck.draw_card(1))
@@ -22,6 +22,7 @@ class Player:
         self.total = 0
         for card in self.hand:
             self.total += card.card_value()
+
     
     def show_hand(self):
         if self.isDealer:

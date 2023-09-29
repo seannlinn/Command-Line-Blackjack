@@ -6,6 +6,8 @@ class Deck:
         self.cards = []
 
     def generate_and_shuffle(self):
+        # reset deck after previous game
+        self.cards.clear()
         # from ace to king
         for i in range(1, 14):
 
