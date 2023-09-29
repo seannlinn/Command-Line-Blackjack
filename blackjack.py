@@ -79,7 +79,6 @@ class Blackjack:
 
 
     def move_double_down(self):
-        self.possible_winnings *= 2
         self.player.money -= self.possible_winnings
         self.player.hit()
         self.eval_aces_player()
